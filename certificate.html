@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Certificate — Py's Python Adventure</title>
+    <meta name="description" content="Your official Python Coder Certificate from Py's Python Adventure." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="assets/mascot.svg?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/styles.css?v=25" />
+  </head>
+  <body data-page="certificate" class="kid-theme certificate-page">
+    <div class="certificate-page-actions no-print">
+      <a class="btn btn-ghost" href="index.html">← Back to map</a>
+      <button class="btn btn-primary" id="print-certificate" type="button">🖨️ Print certificate</button>
+    </div>
+
+    <div class="certificate-wrap">
+      <article class="certificate-card" id="certificate-card">
+        <div class="certificate-border">
+          <div class="certificate-inner">
+            <img class="certificate-mascot" src="assets/mascot.svg?v=2" alt="Py the Python mascot" />
+            <p class="certificate-label">Py's Python Adventure</p>
+            <h1 class="certificate-title">Python Coder Certificate</h1>
+            <p class="certificate-presented">This certificate is proudly presented to</p>
+            <p class="certificate-name" id="cert-child-name">Alex</p>
+            <p class="certificate-body">
+              For completing all coding lessons and passing the final quiz with flying colors!
+            </p>
+            <div class="certificate-meta">
+              <div>
+                <span class="certificate-meta-label">Score</span>
+                <strong id="cert-score">100%</strong>
+              </div>
+              <div>
+                <span class="certificate-meta-label">Date</span>
+                <strong id="cert-date">June 13, 2026</strong>
+              </div>
+            </div>
+            <p class="certificate-footer">🐍 Keep coding, keep exploring! 🚀</p>
+            <div class="certificate-seal">🎓</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <script src="js/lessons.js?v=12"></script>
+    <script src="js/final-quiz.js"></script>
+    <script src="js/store.js?v=9"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const data = AppStore.read();
+        const allDone = data.completedLessons.length >= getAllLessons().length;
+
+        if (!allDone || !data.finalQuizPassed) {
+          window.location.href = "index.html";
+          return;
+        }
+
+        const nameEl = document.getElementById("cert-child-name");
+        const scoreEl = document.getElementById("cert-score");
+        const dateEl = document.getElementById("cert-date");
+
+        const certAvatar = AppStore.getAvatar(data.avatar);
+        nameEl.innerHTML = `<img class="certificate-avatar-icon" src="${certAvatar.icon}" alt="${certAvatar.label}" /> ${data.nickname || "Coder"}`;
+        scoreEl.textContent = (data.finalQuizScore ?? 0) + "%";
+
+        const earned = data.certificateEarnedAt
+          ? new Date(data.certificateEarnedAt)
+          : new Date();
+        dateEl.textContent = earned.toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+        document.getElementById("print-certificate").addEventListener("click", () => {
+          window.print();
+        });
+      });
+    </script>
+  </body>
+</html>

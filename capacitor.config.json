@@ -1,0 +1,10 @@
+{
+  "appId": "com.pyspythonadventure.app",
+  "appName": "Py's Python Adventure",
+  "webDir": ".",
+  "backgroundColor": "#fff4fb",
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#fff4fb"
+  }
+}

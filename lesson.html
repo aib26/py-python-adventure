@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson — Py's Python Adventure</title>
+    <meta name="description" content="Write and run real Python code right in your browser with instant feedback, hints from Py, and fun challenges." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="assets/mascot.svg?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/styles.css?v=25" />
+    <script>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem("pyThemePreference"); } catch (e) {}
+        var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body data-page="lesson" class="kid-theme lesson-page">
+    <div class="bg-shapes" aria-hidden="true">
+      <span class="shape shape-1"></span>
+      <span class="shape shape-2"></span>
+      <span class="shape shape-3"></span>
+    </div>
+
+    <div class="container">
+      <header class="site-header lesson-header">
+        <img class="mascot-float" id="lesson-mascot" src="assets/mascot.svg?v=2" alt="Py the Python mascot" />
+        <div class="lesson-header-text">
+          <h1 id="lesson-title">Lesson</h1>
+          <p><a href="index.html">← Back to lesson map</a></p>
+        </div>
+        <button class="voice-settings-btn" id="voice-settings-btn" type="button" aria-label="Voice settings">🔊</button>
+        <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
+      </header>
+
+      <div class="lesson-layout lesson-layout-modern">
+        <section class="story-panel panel lesson-panel-modern">
+          <div class="lesson-hero">
+            <div class="lesson-emoji bounce" id="lesson-emoji" aria-hidden="true"></div>
+            <div id="lesson-story"></div>
+          </div>
+
+          <button class="read-aloud-btn" id="read-aloud-btn" type="button">
+            <span id="read-aloud-icon" aria-hidden="true">🔊</span>
+            <span id="read-aloud-label">Read aloud</span>
+          </button>
+
+          <div class="tip-card">
+            <img id="tip-mascot" src="assets/mascot.svg?v=2" alt="" />
+            <div>
+              <span class="card-label">Try this</span>
+              <div id="coach-tip-body"></div>
+            </div>
+          </div>
+
+          <div class="challenge-card">
+            <span class="card-label">Your challenge</span>
+            <p id="challenge-text"></p>
+          </div>
+
+          <nav class="lesson-nav">
+            <a class="btn btn-ghost" id="prev-btn" href="#">← Previous</a>
+            <a class="btn btn-primary btn-bounce" id="next-btn" href="index.html">Next →</a>
+          </nav>
+          <p class="lesson-skip">
+            <button class="btn btn-ghost btn-sm" id="continue-anyway-btn" type="button">
+              Skip to next lesson
+            </button>
+          </p>
+        </section>
+
+        <section class="code-panel panel lesson-panel-modern code-workspace">
+          <div class="workspace-block">
+            <div class="workspace-head">
+              <span class="code-label">Example</span>
+            </div>
+            <pre class="example-code" id="example-code"></pre>
+          </div>
+
+          <div class="workspace-block practice-section">
+            <div class="workspace-head">
+              <span class="code-label">Practice</span>
+              <span class="workspace-hint">Tap to load</span>
+            </div>
+            <div class="practice-grid" id="practice-grid"></div>
+          </div>
+
+          <div class="workspace-block editor-block">
+            <div class="workspace-head">
+              <span class="code-label">Your code</span>
+            </div>
+            <textarea
+              class="code-editor"
+              id="code-editor"
+              spellcheck="false"
+              aria-label="Your Python code"
+            ></textarea>
+          </div>
+
+          <div class="action-bar">
+            <button class="btn btn-primary btn-bounce" id="run-btn" type="button" aria-label="Run code">
+              ▶ Run
+            </button>
+            <button class="btn btn-check btn-bounce" id="check-btn" type="button" aria-label="Check coding challenge">
+              ✓ Check
+            </button>
+            <button class="btn btn-quiz btn-bounce" id="quiz-btn" type="button" aria-label="Start lesson quizzes" disabled>
+              🧠 Quizzes
+            </button>
+          </div>
+          <p class="quiz-hint" id="quiz-hint">Pass the challenge to unlock quizzes.</p>
+
+          <div class="workspace-block">
+            <div class="workspace-head">
+              <span class="code-label">Output</span>
+            </div>
+            <pre class="output-box empty" id="output"></pre>
+          </div>
+
+          <div class="turtle-wrap" id="turtle-wrap">
+            <div class="workspace-head">
+              <span class="code-label">Turtle canvas</span>
+            </div>
+            <div id="mycanvas" class="turtle-canvas" aria-label="Turtle drawing area"></div>
+          </div>
+
+          <div class="feedback" id="feedback" role="status"></div>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/lessons.js?v=12"></script>
+    <script src="js/practice-examples.js?v=4"></script>
+    <script src="js/recaps.js?v=3"></script>
+    <script src="js/logic-quizzes.js?v=4"></script>
+    <script src="js/jokes.js?v=5"></script>
+    <script src="js/screen-breaks.js"></script>
+    <script src="js/fun-facts.js?v=6"></script>
+    <script src="js/encouragement.js?v=2"></script>
+    <script src="js/ratings.js"></script>
+    <script src="js/guardrails.js?v=3"></script>
+    <script src="js/store.js?v=9"></script>
+    <script src="js/py-care.js?v=5"></script>
+    <script src="js/voice.js?v=5"></script>
+    <script src="js/ui.js?v=14"></script>
+    <script src="js/unstuck.js?v=2"></script>
+    <script src="js/runner.js?v=4"></script>
+    <script src="js/checker.js"></script>
+    <script src="js/coach.js?v=11"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/app.js?v=22"></script>
+  </body>
+</html>

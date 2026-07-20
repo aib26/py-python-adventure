@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Py's Python Adventure</title>
+    <meta name="description" content="Learn real Python in the browser with Py's Python Adventure — 25+ interactive lessons across Beginner, Intermediate, and High School levels, with instant code feedback, jokes, quizzes, and a friendly mascot. No install needed." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="assets/mascot.svg?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/styles.css?v=25" />
+    <script>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem("pyThemePreference"); } catch (e) {}
+        var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body data-page="home" class="kid-theme">
+    <div class="bg-shapes" aria-hidden="true">
+      <span class="shape shape-1"></span>
+      <span class="shape shape-2"></span>
+      <span class="shape shape-3"></span>
+    </div>
+
+    <div class="container">
+      <header class="site-header">
+        <img class="mascot-float" src="assets/mascot.svg?v=2" alt="Py the Python mascot" />
+        <div>
+          <h1>Py's Python Adventure</h1>
+          <p id="kid-greeting">Learn Python, one lesson at a time</p>
+        </div>
+        <div class="header-actions">
+          <button class="player-chip" id="player-chip" type="button" title="Switch player">
+            <span id="player-chip-avatar">🐍</span>
+            <span id="player-chip-name">Player</span>
+          </button>
+          <a class="btn btn-ghost btn-header-nav" href="leaderboard.html"><svg class="icon-inline" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" fill="currentColor"/><path d="M7 5H4a3 3 0 0 0 3 4M17 5h3a3 3 0 0 1-3 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 12v3M9 19h6M10 19v-2.3a2 2 0 0 1 4 0V19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg> Leaderboard</a>
+          <a class="btn btn-parent-header" href="parent.html"><svg class="icon-inline" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="9" cy="7.5" r="3" fill="currentColor"/><path d="M3.5 19c0-3.3 2.5-6 5.5-6s5.5 2.7 5.5 6" fill="currentColor"/><circle cx="17.5" cy="9.5" r="2.2" fill="currentColor" opacity="0.7"/><path d="M13.5 19c0-2.6 1.8-4.6 4-4.6s4 2 4 4.6" fill="currentColor" opacity="0.7"/></svg> Parent</a>
+          <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
+        </div>
+      </header>
+
+      <section class="progress-strip panel" id="progress-strip">
+        <div id="xp-bar"></div>
+        <div class="badge-shelf badge-shelf-inline" id="badge-shelf" hidden></div>
+      </section>
+
+      <section class="hero-card panel rainbow-border" id="welcome-back" hidden>
+        <h2 id="welcome-back-title">Welcome back!</h2>
+        <p id="welcome-back-text"></p>
+        <div class="completed-trail" id="completed-trail"></div>
+        <a class="btn btn-accent btn-bounce continue-btn" id="continue-btn" href="#">Continue →</a>
+      </section>
+
+      <section class="hero-card panel rainbow-border" id="final-quiz-section" hidden>
+        <h2 id="final-quiz-title">🎓 Final Quiz</h2>
+        <p id="final-quiz-text"></p>
+        <div class="final-quiz-actions" id="final-quiz-actions"></div>
+      </section>
+
+      <section class="hero-card panel" id="hero-intro">
+        <h2>Your Python adventure</h2>
+        <p>25 short lessons across three levels. Finish one, feed Py a snack. That's it!</p>
+      </section>
+
+      <section class="py-care-section" id="py-care-section">
+        <div id="py-care-root"></div>
+      </section>
+
+      <section id="lessons-section">
+        <h2 class="section-title" id="up-next-title">Lessons</h2>
+        <div class="lesson-grid" id="lesson-grid"></div>
+      </section>
+
+      <p class="footer-actions">
+        <button class="btn btn-ghost" id="reset-progress" type="button">Reset progress</button>
+      </p>
+    </div>
+
+    <script src="js/lessons.js?v=12"></script>
+    <script src="js/recaps.js?v=3"></script>
+    <script src="js/final-quiz.js"></script>
+    <script src="js/jokes.js?v=5"></script>
+    <script src="js/fun-facts.js?v=6"></script>
+    <script src="js/encouragement.js?v=2"></script>
+    <script src="js/ratings.js"></script>
+    <script src="js/guardrails.js?v=3"></script>
+    <script src="js/store.js?v=9"></script>
+    <script src="js/py-care.js?v=5"></script>
+    <script src="js/ui.js?v=14"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/app.js?v=22"></script>
+  </body>
+</html>

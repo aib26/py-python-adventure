@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaderboard — Py's Python Adventure</title>
+    <meta name="description" content="See how coders on this device rank by XP as they progress through Py's Python Adventure." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="assets/mascot.svg?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/styles.css?v=25" />
+    <script>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem("pyThemePreference"); } catch (e) {}
+        var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body data-page="leaderboard" class="kid-theme">
+    <div class="container">
+      <header class="site-header">
+        <img class="mascot-float" src="assets/mascot.svg?v=2" alt="Py the Python mascot" />
+        <div>
+          <h1><svg class="icon-inline icon-inline-lg" viewBox="0 0 24 24" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" fill="currentColor"/><path d="M7 5H4a3 3 0 0 0 3 4M17 5h3a3 3 0 0 1-3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M12 12v3M9 19h6M10 19v-2.3a2 2 0 0 1 4 0V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg> Leaderboard</h1>
+          <p>Players on this device</p>
+        </div>
+        <div class="header-actions">
+          <a class="btn btn-ghost" href="index.html">← Back to map</a>
+          <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
+        </div>
+      </header>
+
+      <section class="hero-card panel">
+        <p>Ranked by XP earned on this device. Some coders below are Py's animal pals cheering everyone on — everyone else is a real player who has set up a profile here!</p>
+      </section>
+
+      <section id="leaderboard-section">
+        <div class="leaderboard-list" id="leaderboard-list"></div>
+      </section>
+    </div>
+
+    <script src="js/lessons.js?v=12"></script>
+    <script src="js/guardrails.js?v=3"></script>
+    <script src="js/store.js?v=9"></script>
+    <script src="js/py-care.js?v=5"></script>
+    <script src="js/ui.js?v=14"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/leaderboard.js"></script>
+  </body>
+</html>

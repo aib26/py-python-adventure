@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parent Dashboard — Py's Python Adventure</title>
+    <meta name="description" content="Track your child's progress through Py's Python Adventure, manage player profiles, and respond to help requests." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="assets/mascot.svg?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/styles.css?v=25" />
+    <script>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem("pyThemePreference"); } catch (e) {}
+        var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body data-page="parent" class="parent-theme">
+    <div class="container">
+      <header class="site-header">
+        <img src="assets/mascot.svg?v=2" alt="Py the Python mascot" />
+        <div>
+          <h1>Parent Dashboard</h1>
+          <p>Progress for <span id="child-avatar-display"></span> <strong id="child-name-display">Coder</strong></p>
+        </div>
+        <div class="header-actions">
+          <a class="btn btn-ghost btn-header-nav" href="leaderboard.html"><svg class="icon-inline" viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" fill="currentColor"/><path d="M7 5H4a3 3 0 0 0 3 4M17 5h3a3 3 0 0 1-3 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 12v3M9 19h6M10 19v-2.3a2 2 0 0 1 4 0V19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg> Leaderboard</a>
+          <a class="btn btn-ghost btn-header-nav" href="index.html">← Kid view</a>
+          <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
+        </div>
+      </header>
+
+      <section class="parent-grid">
+        <article class="panel parent-card">
+          <h2>Overview</h2>
+          <div class="parent-stats parent-stats-slim">
+            <div><span>Lessons</span><strong id="parent-stars">0 / 25</strong></div>
+            <div><span>Level</span><strong id="parent-level">🌱 Beginner</strong></div>
+            <div><span>Streak</span><strong id="parent-streak">0 days</strong></div>
+          </div>
+        </article>
+
+        <article class="panel parent-card parent-alert-card">
+          <h2>Help requests <span class="pending-badge" id="pending-count">0</span></h2>
+          <p id="notif-status" class="muted-text">Turn on notifications to get alerts when your child asks for help.</p>
+          <button class="btn btn-parent" id="enable-notifications" type="button">Enable notifications</button>
+          <div id="help-requests-list" class="help-requests-list"></div>
+        </article>
+
+        <article class="panel parent-card">
+          <h2>Player settings</h2>
+          <p class="muted-text">No real names needed — just a fun nickname and an animal avatar. This keeps things anonymous and safe.</p>
+          <label class="parent-label" for="child-name-input">Nickname</label>
+          <div class="parent-name-row">
+            <input id="child-name-input" type="text" maxlength="18" placeholder="CoolCoder" />
+            <button class="btn btn-primary btn-sm" id="save-child-name" type="button">Save</button>
+          </div>
+          <label class="parent-label" for="avatar-picker-grid">Avatar</label>
+          <div id="avatar-picker-grid" class="avatar-picker-grid"></div>
+        </article>
+
+        <article class="panel parent-card">
+          <h2>Players on this device</h2>
+          <p class="muted-text">Siblings can each have their own profile and progress.</p>
+          <div id="profile-switch-list" class="profile-switch-list"></div>
+          <button class="btn btn-ghost btn-sm" id="add-profile-btn" type="button">➕ Add a new player</button>
+        </article>
+
+        <article class="panel parent-card">
+          <h2>Certificate</h2>
+          <div id="certificate-status" class="certificate-status"></div>
+        </article>
+
+        <article class="panel parent-card">
+          <h2>Lesson progress</h2>
+          <div id="lesson-progress-list" class="lesson-progress-list"></div>
+        </article>
+      </section>
+    </div>
+
+    <script src="js/lessons.js?v=12"></script>
+    <script src="js/final-quiz.js"></script>
+    <script src="js/ratings.js"></script>
+    <script src="js/guardrails.js?v=3"></script>
+    <script src="js/store.js?v=9"></script>
+    <script src="js/py-care.js?v=5"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/parent.js?v=7"></script>
+  </body>
+</html>

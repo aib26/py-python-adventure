@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Py's Python Adventure app icon">
+  <defs>
+    <linearGradient id="icon-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf5ff" />
+      <stop offset="100%" stop-color="#ecfeff" />
+    </linearGradient>
+    <linearGradient id="py-body" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="55%" stop-color="#6d28d9" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="120" height="120" fill="url(#icon-bg)" />
+
+  <!-- coiled snake body, single confident ribbon -->
+  <path
+    d="M 100 66
+       C 100 88 82 102 60 102
+       C 35 102 18 86 18 64
+       C 18 44 33 30 52 30
+       C 68 30 79 41 79 54
+       C 79 65 71 73 60 73
+       C 51 73 45 66 45 58"
+    fill="none"
+    stroke="url(#py-body)"
+    stroke-width="20"
+    stroke-linecap="round"
+  />
+
+  <!-- head -->
+  <circle cx="45" cy="58" r="16" fill="url(#py-body)" />
+
+  <!-- face -->
+  <ellipse cx="39.5" cy="55" rx="4.2" ry="5" fill="#0f172a" />
+  <ellipse cx="52" cy="55" rx="4.2" ry="5" fill="#0f172a" />
+  <circle cx="41" cy="53" r="1.4" fill="#fff" />
+  <circle cx="53.5" cy="53" r="1.4" fill="#fff" />
+  <path d="M 38 65 Q 45 70 52 65" stroke="#0f172a" stroke-width="2.4" fill="none" stroke-linecap="round" />
+
+  <!-- forked tongue -->
+  <path d="M 45 73 L 45 80 M 45 80 L 41.5 84 M 45 80 L 48.5 84" stroke="#f43f5e" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

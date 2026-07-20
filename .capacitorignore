@@ -1,0 +1,11 @@
+node_modules
+package.json
+package-lock.json
+capacitor.config.json
+.capacitorignore
+resources
+ios
+android
+.git
+.DS_Store
+README.md
