@@ -49,7 +49,7 @@ const LESSONS = [
       { label: "Change", text: "Change both lines to be about you." },
     ],
     story: `
-      <p>Hi again! Py here. 🐍 Last time you printed one line.</p>
+      <p>Hi again! Py here. ✌️ Last time you printed one line.</p>
       <p>Now let's print two! The computer reads top to bottom, like a book.</p>
       <p>Each <code>print()</code> makes a new line. Two prints make two lines.</p>
       <p>Press ▶ Run. Count the lines!</p>
@@ -260,7 +260,7 @@ print("Line 3")`,
       { label: "Change", text: "Put YOUR info on the right side of each = sign." },
     ],
     story: `
-      <p>Welcome back! Py here. 🐍</p>
+      <p>Welcome back! Py here. 📦</p>
       <p>Sometimes you want Python to <strong>remember</strong> something — your name, your score, your favorite color. That's what a <strong>variable</strong> does. Think of it like a labeled box: <code>name = "Alex"</code> puts your name in the box called <code>name</code>.</p>
       <p>Later you open the box with <code>print(name)</code> — no quotes around the box name! Let's fill in the boxes with info about you.</p>
     `,
@@ -455,7 +455,7 @@ print("Go!")`,
       { label: "Change", text: "Put 3 foods YOU like in the list." },
     ],
     story: `
-      <p>Hey! Py again. 🐍</p>
+      <p>Hey! Py again. 🛒</p>
       <p>A <strong>list</strong> holds lots of items in one place — like a shopping list or a playlist. We write lists with square brackets: <code>["milk", "eggs", "bread"]</code>.</p>
       <p>Here's a funny thing: the <strong>first</strong> item is <code>[0]</code>, not [1]. Computers like to start counting at zero!</p>
     `,

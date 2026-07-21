@@ -341,6 +341,39 @@ const CoachPy = (() => {
     return parts.join("\n\n");
   }
 
+  // Hints get more specific each time the same kid asks again in this lesson,
+  // instead of repeating the exact same line — a real waterfall from a gentle
+  // nudge down to "here's the pattern, copy and adjust it."
+  function respondHint(state) {
+    const { lesson } = state;
+    state.hintCount = (state.hintCount || 0) + 1;
+    const n = state.hintCount;
+
+    if (n === 1) {
+      return `Hint for ${lesson.title}: ${lesson.hint}`;
+    }
+
+    if (n === 2) {
+      const steps = lessonStepsHelp(lesson);
+      if (steps) {
+        return `Let's break it into steps:\n${steps}`;
+      }
+      return lesson.tip
+        ? `A bit more: ${lesson.tip}`
+        : `Hint for ${lesson.title}: ${lesson.hint}`;
+    }
+
+    if (n === 3) {
+      return `Here's exactly how to write it:\n${stripHtml(lesson.syntax)}\n\n${stripHtml(lesson.syntaxNote || "")}`;
+    }
+
+    return (
+      `Let's do this together! Here's the pattern:\n${stripHtml(lesson.syntax)}\n\n` +
+      `Challenge: ${lesson.challenge}\n\n` +
+      `Copy that pattern into your code, then change it to match the challenge. You can also peek at the Example box on the right for a full working example!`
+    );
+  }
+
   function respondError(state) {
     const runHelp = runErrorHelp(state);
     if (runHelp) {
@@ -427,7 +460,7 @@ const CoachPy = (() => {
       case "error":
         return respondError(state);
       case "hint":
-        return `Hint for ${lesson.title}: ${lesson.hint}`;
+        return respondHint(state);
       case "challenge":
         return `Challenge: ${lesson.challenge}\n\nTip: ${lesson.tip}`;
       case "guess":

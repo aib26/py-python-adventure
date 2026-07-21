@@ -13,10 +13,10 @@ const PyCare = (() => {
   };
 
   const MOODS = [
-    { min: 65, emoji: "😄" },
-    { min: 40, emoji: "🙂" },
-    { min: 20, emoji: "😐" },
-    { min: 0, emoji: "😢" },
+    { min: 65, emoji: "😄", label: "Py hisses with joy! 🐍" },
+    { min: 40, emoji: "🙂", label: "Py's feeling good!" },
+    { min: 20, emoji: "😐", label: "Py could use a snack..." },
+    { min: 0, emoji: "😢", label: "Py's feeling low..." },
   ];
 
   function getMood(happiness) {
@@ -44,14 +44,14 @@ const PyCare = (() => {
     container.innerHTML = `
       <div class="py-care-slim panel">
         <div class="py-care-row">
-          <div class="py-avatar py-avatar-sm">
+          <div class="py-avatar py-avatar-sm" id="py-avatar-react">
             <img src="assets/mascot.svg?v=2" alt="Py" class="py-avatar-img" />
             <span class="py-mood-emoji" aria-hidden="true">${mood.emoji}</span>
           </div>
           <div class="py-care-body">
             <div class="py-care-label">
               <strong>Py</strong>
-              <span>${stats.happiness}% happy</span>
+              <span>${mood.label}</span>
             </div>
             <div class="py-bar py-bar-slim">
               <div class="py-bar-fill happiness-fill" style="width:${stats.happiness}%"></div>
@@ -88,12 +88,30 @@ const PyCare = (() => {
             if (result.ok) {
               showFeedBurst(snack, result);
               render(container, onUpdate);
+              reactAvatar(container);
               if (onUpdate) onUpdate();
             }
           });
           grid.appendChild(btn);
         });
     }
+  }
+
+  // A little physical reaction instead of a number — Py wiggles and hisses
+  // happily when fed, rather than the UI reporting a happiness percentage.
+  function reactAvatar(container) {
+    const avatar = container.querySelector("#py-avatar-react");
+    if (!avatar) return;
+
+    avatar.classList.remove("py-avatar-hiss");
+    void avatar.offsetWidth;
+    avatar.classList.add("py-avatar-hiss");
+
+    const hiss = document.createElement("span");
+    hiss.className = "py-hiss-bubble";
+    hiss.textContent = "ssssss~";
+    avatar.appendChild(hiss);
+    setTimeout(() => hiss.remove(), 1100);
   }
 
   function showFeedBurst(snack, result) {
