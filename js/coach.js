@@ -344,6 +344,9 @@ const CoachPy = (() => {
   // Hints get more specific each time the same kid asks again in this lesson,
   // instead of repeating the exact same line — a real waterfall from a gentle
   // nudge down to "here's the pattern, copy and adjust it."
+  // Each ask nudges the kid to reason it out a little more, instead of handing
+  // over more answer each time — even the last tier asks a question rather
+  // than saying "copy this."
   function respondHint(state) {
     const { lesson } = state;
     state.hintCount = (state.hintCount || 0) + 1;
@@ -354,23 +357,28 @@ const CoachPy = (() => {
     }
 
     if (n === 2) {
-      const steps = lessonStepsHelp(lesson);
-      if (steps) {
-        return `Let's break it into steps:\n${steps}`;
+      if (lesson.thinkFirst) {
+        return `Let's think it through: ${stripHtml(lesson.thinkFirst)}\n\nWhat do YOU think should happen? Make your best guess, then try it!`;
       }
-      return lesson.tip
-        ? `A bit more: ${lesson.tip}`
-        : `Hint for ${lesson.title}: ${lesson.hint}`;
+      return `Look closely at the Example box on the right, then look at your own code. What's different between them?`;
     }
 
     if (n === 3) {
-      return `Here's exactly how to write it:\n${stripHtml(lesson.syntax)}\n\n${stripHtml(lesson.syntaxNote || "")}`;
+      const lookStep = lesson.steps?.find((s) => /look/i.test(s.label));
+      const guessStep = lesson.steps?.find((s) => /guess|think/i.test(s.label));
+      const parts = [];
+      if (lookStep) parts.push(`${lookStep.label}: ${stripHtml(lookStep.text)}`);
+      if (guessStep) parts.push(`${guessStep.label}: ${stripHtml(guessStep.text)}`);
+      if (parts.length) {
+        return `Let's slow down and go step by step:\n${parts.join("\n")}\n\nTry changing just ONE thing based on that, then run it again.`;
+      }
+      return `Compare your code to the "How to Write It" box, line by line. Which line looks different from what it expects?`;
     }
 
     return (
-      `Let's do this together! Here's the pattern:\n${stripHtml(lesson.syntax)}\n\n` +
-      `Challenge: ${lesson.challenge}\n\n` +
-      `Copy that pattern into your code, then change it to match the challenge. You can also peek at the Example box on the right for a full working example!`
+      `Okay, let's figure it out together. Here's the pattern this lesson uses:\n${stripHtml(lesson.syntax)}\n\n` +
+      `Don't just copy it — look at how it's built, then think about what YOU need to change to match: ${lesson.challenge}\n\n` +
+      `Which part do you think needs to change?`
     );
   }
 
