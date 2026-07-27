@@ -372,6 +372,35 @@ a:hover {
   gap: 10px;
 }
 
+/* Explorer / Adventurer / Trailblazer sit side by side as columns, each with
+   its own heading and a vertical stack of that tier's lessons underneath —
+   clearer grouping than one long interleaved grid. */
+.tier-groups {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.tier-group {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tier-group .lesson-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .tier-groups {
+    flex-direction: column;
+  }
+}
+
 .lesson-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -845,39 +874,6 @@ a:hover {
   margin-bottom: 8px;
 }
 
-.read-aloud-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0 0 16px;
-  padding: 8px 16px;
-  border: 2px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font);
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s var(--ease-bounce), background 0.15s ease, border-color 0.15s ease;
-}
-
-.read-aloud-btn:hover:not(:disabled) {
-  transform: translateY(-1px);
-  border-color: var(--primary-light);
-}
-
-.read-aloud-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.read-aloud-btn.speaking {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-}
-
 .card-label {
   display: block;
   font-size: 0.72rem;
@@ -1236,16 +1232,18 @@ a:hover {
 
 /* Museum-exhibit-style placard — deliberately distinct from the candy-purple
    cards elsewhere: warm parchment tone, brass year medallion, small-caps label. */
+/* Bold flat amber card — matches the site's Duolingo-style accent language
+   instead of the old sepia/parchment gradient, which read as dated. */
 .history-placard {
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  background: linear-gradient(135deg, #fdf6e9 0%, #faf0dc 100%);
-  border: 1px solid #e2c48d;
-  border-radius: 12px;
+  background: var(--level3-light);
+  border: 2px solid var(--level3);
+  border-radius: 14px;
   padding: 14px 16px;
   margin-bottom: 16px;
-  box-shadow: 0 3px 10px rgba(146, 96, 47, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .history-placard-year {
@@ -1253,26 +1251,26 @@ a:hover {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d9a066, #a5682f);
+  background: var(--level3);
+  border: 2px solid var(--level3-dark);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.72rem;
   text-align: center;
   line-height: 1.1;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .history-placard-label {
   display: block;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #92602f;
+  color: var(--level3-dark);
   margin-bottom: 4px;
 }
 
@@ -1284,16 +1282,16 @@ a:hover {
 }
 
 [data-theme="dark"] .history-placard {
-  background: linear-gradient(135deg, #241c12 0%, #1e1710 100%);
-  border-color: #92602f;
+  background: var(--level3-light);
+  border-color: var(--level3);
 }
 
 [data-theme="dark"] .history-placard-label {
-  color: #e2c48d;
+  color: #fde68a;
 }
 
 [data-theme="dark"] .history-placard-body p {
-  color: #f1e6d4;
+  color: #fef3c7;
 }
 
 .lesson-narrative code {
@@ -1700,39 +1698,8 @@ textarea.code-editor:focus {
 .coach-header strong { display: block; }
 .coach-header p { margin: 0; font-size: 0.85rem; color: var(--muted); }
 
-.coach-voice-toggle {
-  margin-left: auto;
-  width: 32px;
-  height: 32px;
-  min-height: 32px;
-  padding: 0;
-  border: 2px solid transparent;
-  border-radius: 999px;
-  background: transparent;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.5;
-  transition: opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-}
-
-.coach-voice-toggle:hover { opacity: 0.8; }
-
-.coach-voice-toggle.active {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.6);
-  border-color: #6ee7b7;
-}
-
-.coach-voice-toggle:disabled {
-  opacity: 0.25;
-  cursor: not-allowed;
-}
-
 .coach-close {
-  margin-left: 4px;
+  margin-left: auto;
   border: none;
   background: transparent;
   font-size: 1.6rem;
@@ -1751,39 +1718,14 @@ textarea.code-editor:focus {
 }
 
 .coach-bubble {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
   padding: 10px 14px;
   border-radius: 16px;
   max-width: 92%;
   line-height: 1.4;
   font-size: 0.95rem;
+  white-space: pre-wrap;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   animation: bubble-in 0.2s ease;
-}
-
-.coach-bubble-text {
-  white-space: pre-wrap;
-}
-
-.coach-bubble-speak {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  min-height: 24px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  font-size: 0.85rem;
-  opacity: 0.5;
-  cursor: pointer;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
-.coach-bubble-speak:hover {
-  opacity: 1;
-  transform: scale(1.15);
 }
 
 @keyframes bubble-in {
@@ -1793,12 +1735,14 @@ textarea.code-editor:focus {
 
 .coach-bubble-coach {
   background: #ecfdf5;
+  color: #064e3b;
   align-self: flex-start;
   border-bottom-left-radius: 4px;
 }
 
 .coach-bubble-kid {
   background: #ede9fe;
+  color: #3730a3;
   align-self: flex-end;
   border-bottom-right-radius: 4px;
 }
@@ -1890,56 +1834,6 @@ textarea.code-editor:focus {
 .help-modal .modal-card { border-color: #93c5fd; }
 .break-eyes .modal-card { border-color: var(--level1-light); }
 .break-move .modal-card { border-color: #fdba74; }
-.voice-modal .modal-card { border-color: #6ee7b7; }
-
-.voice-settings-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: left;
-  margin: 16px 0;
-}
-
-.voice-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.voice-field span {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.voice-field select {
-  border: 2px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-family: var(--font);
-  font-size: 0.9rem;
-  background: var(--surface);
-  color: var(--text);
-}
-
-.voice-field input[type="range"] {
-  width: 100%;
-  accent-color: var(--primary);
-}
-
-.voice-field-toggle {
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.voice-field-toggle input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--primary);
-  flex-shrink: 0;
-}
 
 .milestone-summary-list {
   display: flex;
@@ -2576,12 +2470,6 @@ textarea.code-editor:focus {
   height: 44px;
 }
 
-.py-avatar-sm .py-mood-emoji {
-  width: 28px;
-  height: 28px;
-  font-size: 1.1rem;
-}
-
 .py-care-body {
   flex: 1;
   min-width: 0;
@@ -2679,21 +2567,6 @@ textarea.code-editor:focus {
 .py-avatar-img {
   width: 72px;
   height: 72px;
-}
-
-.py-mood-emoji {
-  position: absolute;
-  bottom: -4px;
-  right: -4px;
-  font-size: 1.6rem;
-  background: #fff;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border: 2px solid #e9d5ff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* A wiggle + floating hiss text on feed — a physical reaction instead of a
@@ -2937,8 +2810,7 @@ textarea.code-editor:focus {
   white-space: nowrap;
 }
 
-.theme-toggle-btn,
-.voice-settings-btn {
+.theme-toggle-btn {
   width: 42px;
   height: 42px;
   min-height: 42px;
@@ -2956,8 +2828,7 @@ textarea.code-editor:focus {
   flex-shrink: 0;
 }
 
-.theme-toggle-btn:hover,
-.voice-settings-btn:hover {
+.theme-toggle-btn:hover {
   transform: translateY(-2px) scale(1.05);
   background: var(--bg);
 }

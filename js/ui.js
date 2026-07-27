@@ -741,93 +741,6 @@ const LessonUI = (() => {
       .join("");
   }
 
-  function showVoiceSettingsModal() {
-    const overlay = createOverlay("voice-modal", "voice-modal");
-    const card = overlay.querySelector(".modal-card");
-
-    function render() {
-      const prefs = VoiceReader.getPrefs();
-      const voices = VoiceReader.getVoices();
-      const selected = VoiceReader.getSelectedVoice();
-      const disabled = !VoiceReader.supported;
-
-      card.innerHTML = `
-        <div class="modal-emoji">🔊</div>
-        <h2>Coach Py's Voice</h2>
-        <p class="modal-sub">Pick a voice and make it sound just right.</p>
-        <div class="voice-settings-form">
-          <label class="voice-field">
-            <span>Voice</span>
-            <select id="voice-select" ${disabled ? "disabled" : ""}></select>
-          </label>
-          <label class="voice-field">
-            <span>Speed</span>
-            <input type="range" id="voice-rate" min="0.7" max="1.3" step="0.05" value="${prefs.rate}" ${disabled ? "disabled" : ""} />
-          </label>
-          <label class="voice-field">
-            <span>Pitch</span>
-            <input type="range" id="voice-pitch" min="0.8" max="1.6" step="0.05" value="${prefs.pitch}" ${disabled ? "disabled" : ""} />
-          </label>
-          <label class="voice-field voice-field-toggle">
-            <span>Read Coach Py's replies out loud automatically</span>
-            <input type="checkbox" id="voice-autoread" ${prefs.autoRead ? "checked" : ""} ${disabled ? "disabled" : ""} />
-          </label>
-        </div>
-        <div class="modal-actions">
-          <button class="btn btn-ghost" id="voice-test" type="button" ${disabled ? "disabled" : ""}>▶ Try it</button>
-          <button class="btn btn-primary" id="voice-done" type="button">Done</button>
-        </div>
-        <p class="modal-note">
-          ${
-            disabled
-              ? "This browser can't read text aloud yet — try Chrome, Safari, or Edge."
-              : "Try a few voices from the list above — each one plays a quick preview. Still sounds robotic? Your device may have better voices to download under \"Natural\" or \"Enhanced\" in its accessibility or spoken-content settings."
-          }
-        </p>
-      `;
-
-      const select = card.querySelector("#voice-select");
-      if (!voices.length) {
-        const opt = document.createElement("option");
-        opt.textContent = disabled ? "Not available" : "Loading voices...";
-        select.appendChild(opt);
-      } else {
-        voices.forEach((v) => {
-          const opt = document.createElement("option");
-          opt.value = v.voiceURI;
-          opt.textContent = `${v.name} (${v.lang})`;
-          if (selected && v.voiceURI === selected.voiceURI) opt.selected = true;
-          select.appendChild(opt);
-        });
-      }
-
-      select.addEventListener("change", () => {
-        VoiceReader.setPrefs({ voiceURI: select.value });
-        VoiceReader.speak("Hi! I'm Coach Py. Does this sound better?");
-      });
-      card.querySelector("#voice-rate").addEventListener("input", (e) => {
-        VoiceReader.setPrefs({ rate: Number(e.target.value) });
-      });
-      card.querySelector("#voice-pitch").addEventListener("input", (e) => {
-        VoiceReader.setPrefs({ pitch: Number(e.target.value) });
-      });
-      card.querySelector("#voice-autoread").addEventListener("change", (e) => {
-        VoiceReader.setPrefs({ autoRead: e.target.checked });
-      });
-      card.querySelector("#voice-test")?.addEventListener("click", () => {
-        VoiceReader.speak("Hi! I'm Coach Py. Let's write some code together!");
-      });
-      card.querySelector("#voice-done").addEventListener("click", () => {
-        VoiceReader.stop();
-        closeOverlay(overlay);
-      });
-    }
-
-    render();
-    VoiceReader.onVoicesReady(() => render());
-    overlay.classList.add("open");
-  }
-
   return {
     showLogicQuiz,
     showJokeBreak,
@@ -842,7 +755,6 @@ const LessonUI = (() => {
     showProfileSwitchModal,
     showScreenBreak,
     showSuccessBurst,
-    showVoiceSettingsModal,
     renderXpBar,
     renderBadgeShelf,
   };

@@ -13,10 +13,10 @@ const PyCare = (() => {
   };
 
   const MOODS = [
-    { min: 65, emoji: "😄", label: "Py hisses with joy! 🐍" },
-    { min: 40, emoji: "🙂", label: "Py's feeling good!" },
-    { min: 20, emoji: "😐", label: "Py could use a snack..." },
-    { min: 0, emoji: "😢", label: "Py's feeling low..." },
+    { min: 65, label: "Py hisses with joy! 🐍" },
+    { min: 40, label: "Py's feeling good!" },
+    { min: 20, label: "Py could use a snack..." },
+    { min: 0, label: "Py's feeling low..." },
   ];
 
   function getMood(happiness) {
@@ -46,7 +46,6 @@ const PyCare = (() => {
         <div class="py-care-row">
           <div class="py-avatar py-avatar-sm" id="py-avatar-react">
             <img src="assets/mascot.svg?v=2" alt="Py" class="py-avatar-img" />
-            <span class="py-mood-emoji" aria-hidden="true">${mood.emoji}</span>
           </div>
           <div class="py-care-body">
             <div class="py-care-label">

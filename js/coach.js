@@ -512,7 +512,6 @@ const CoachPy = (() => {
           <strong>Coach Py</strong>
           <p>Ask me about this lesson</p>
         </div>
-        <button class="coach-voice-toggle" id="coach-voice-toggle" type="button" aria-label="Read Coach Py's replies aloud" aria-pressed="false">🔊</button>
         <button class="coach-close" type="button" aria-label="Close Coach Py">×</button>
       </div>
       <div class="coach-messages" id="coach-messages"></div>
@@ -552,28 +551,9 @@ const CoachPy = (() => {
     function addBubble(text, who) {
       const bubble = document.createElement("div");
       bubble.className = `coach-bubble coach-bubble-${who}`;
-
-      const textEl = document.createElement("span");
-      textEl.className = "coach-bubble-text";
-      textEl.textContent = text;
-      bubble.appendChild(textEl);
-
-      if (who === "coach" && VoiceReader.supported) {
-        const speakBtn = document.createElement("button");
-        speakBtn.type = "button";
-        speakBtn.className = "coach-bubble-speak";
-        speakBtn.setAttribute("aria-label", "Read this message aloud");
-        speakBtn.textContent = "🔊";
-        speakBtn.addEventListener("click", () => VoiceReader.speak(text));
-        bubble.appendChild(speakBtn);
-      }
-
+      bubble.textContent = text;
       messages.appendChild(bubble);
       messages.scrollTop = messages.scrollHeight;
-
-      if (who === "coach" && VoiceReader.supported && VoiceReader.getPrefs().autoRead) {
-        VoiceReader.speak(text);
-      }
     }
 
     function reply(userMessage) {
@@ -589,26 +569,6 @@ const CoachPy = (() => {
       btn.addEventListener("click", () => reply(item.message));
       quick.appendChild(btn);
     });
-
-    const voiceToggle = panel.querySelector("#coach-voice-toggle");
-    if (voiceToggle) {
-      if (!VoiceReader.supported) {
-        voiceToggle.disabled = true;
-        voiceToggle.title = "Not supported in this browser";
-      } else {
-        const syncVoiceToggle = () => {
-          const on = VoiceReader.getPrefs().autoRead;
-          voiceToggle.classList.toggle("active", on);
-          voiceToggle.setAttribute("aria-pressed", String(on));
-          voiceToggle.title = on ? "Auto-read replies: on" : "Auto-read replies: off";
-        };
-        syncVoiceToggle();
-        voiceToggle.addEventListener("click", () => {
-          VoiceReader.setPrefs({ autoRead: !VoiceReader.getPrefs().autoRead });
-          syncVoiceToggle();
-        });
-      }
-    }
 
     addBubble(respondGreeting(resolveState()), "coach");
 

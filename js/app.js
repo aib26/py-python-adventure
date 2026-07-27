@@ -352,31 +352,38 @@ function renderHomePage() {
   }
 
   grid.innerHTML = "";
+  const TIERS = [
+    { test: (id) => id <= 20, dividerClass: "divider-teal", label: "🌱 Explorer <em>· Ages 7-10</em>" },
+    { test: (id) => id >= 21 && id <= 25, dividerClass: "divider-gold", label: "🧭 Adventurer <em>· Ages 10-14</em>" },
+    { test: (id) => id >= 26, dividerClass: "divider-slate", label: "🎓 Trailblazer <em>· High School</em>" },
+  ];
+
+  const allLessons = getAllLessons();
   let cardIndex = 0;
-  getAllLessons().forEach((lesson) => {
-    if (lesson.id === 1) {
-      const divider = document.createElement("div");
-      divider.className = "level-divider divider-teal";
-      divider.innerHTML = `<span>🌱 Explorer <em>· Ages 7-10</em></span>`;
-      grid.appendChild(divider);
-    }
-    if (lesson.id === 21) {
-      const divider = document.createElement("div");
-      divider.className = "level-divider divider-gold";
-      divider.innerHTML = `<span>🧭 Adventurer <em>· Ages 10-14</em></span>`;
-      grid.appendChild(divider);
-    }
-    if (lesson.id === 26) {
-      const divider = document.createElement("div");
-      divider.className = "level-divider divider-slate";
-      divider.innerHTML = `<span>🎓 Trailblazer <em>· High School</em></span>`;
-      grid.appendChild(divider);
-    }
-    const card = buildLessonCard(lesson, { isNext: lesson.id === nextLessonId });
-    card.style.setProperty("--i", cardIndex);
-    card.style.setProperty("--tilt", `${(Math.sin(lesson.id * 2.3) * 1.1).toFixed(2)}deg`);
-    grid.appendChild(card);
-    cardIndex += 1;
+  TIERS.forEach((tier) => {
+    const tierLessons = allLessons.filter((lesson) => tier.test(lesson.id));
+    if (!tierLessons.length) return;
+
+    const section = document.createElement("div");
+    section.className = "tier-group";
+
+    const divider = document.createElement("div");
+    divider.className = `level-divider ${tier.dividerClass}`;
+    divider.innerHTML = `<span>${tier.label}</span>`;
+    section.appendChild(divider);
+
+    const tierGrid = document.createElement("div");
+    tierGrid.className = "lesson-grid";
+    tierLessons.forEach((lesson) => {
+      const card = buildLessonCard(lesson, { isNext: lesson.id === nextLessonId });
+      card.style.setProperty("--i", cardIndex);
+      card.style.setProperty("--tilt", `${(Math.sin(lesson.id * 2.3) * 1.1).toFixed(2)}deg`);
+      tierGrid.appendChild(card);
+      cardIndex += 1;
+    });
+    section.appendChild(tierGrid);
+
+    grid.appendChild(section);
   });
 
   const resetBtn = document.getElementById("reset-progress");
@@ -424,35 +431,6 @@ function renderLessonPage() {
   document.getElementById("coach-tip-body").innerHTML = buildCoachTip(lesson);
   document.getElementById("example-code").textContent = lesson.exampleCode;
   document.getElementById("challenge-text").textContent = lesson.challenge;
-
-  const voiceSettingsBtn = document.getElementById("voice-settings-btn");
-  if (voiceSettingsBtn) {
-    voiceSettingsBtn.onclick = () => LessonUI.showVoiceSettingsModal();
-  }
-
-  const readAloudBtn = document.getElementById("read-aloud-btn");
-  const readAloudIcon = document.getElementById("read-aloud-icon");
-  const readAloudLabel = document.getElementById("read-aloud-label");
-  if (readAloudBtn) {
-    if (!VoiceReader.supported) {
-      readAloudBtn.disabled = true;
-      readAloudLabel.textContent = "Not supported";
-    } else {
-      readAloudBtn.onclick = () => {
-        if (VoiceReader.isSpeaking()) {
-          VoiceReader.stop();
-          return;
-        }
-        const parts = [lesson.story, lesson.bigIdea, `Your challenge: ${lesson.challenge}`].filter(Boolean);
-        VoiceReader.speak(parts.join(". "));
-      };
-      VoiceReader.onSpeakingChange((speaking) => {
-        readAloudBtn.classList.toggle("speaking", speaking);
-        readAloudIcon.textContent = speaking ? "⏹" : "🔊";
-        readAloudLabel.textContent = speaking ? "Stop" : "Read aloud";
-      });
-    }
-  }
 
   const editor = document.getElementById("code-editor");
   const output = document.getElementById("output");
