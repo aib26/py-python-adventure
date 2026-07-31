@@ -200,6 +200,66 @@ const UnstuckGuide = (() => {
         ],
       },
     },
+    19: {
+      runs: {
+        message: "Python couldn't run your guessing game. Fix it with these steps:",
+        steps: [
+          "Line 1 must be: import random",
+          "Line 2 must be: secret = random.randint(1, 10)",
+          "Check the if/else lines end with a colon :",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      containsCode: {
+        message: "Set guess to 7 so you have the best shot at winning.",
+        steps: [
+          "Find: guess = 3",
+          "Change the 3 to a 7",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      contains: {
+        message: "Output doesn't show The number was yet.",
+        steps: [
+          "Make sure guess = 7 is set",
+          "Press ▶ Run — if you don't win, press ▶ Run again (secret is random!)",
+          "Keep running until Output says You win!",
+        ],
+      },
+    },
+    20: {
+      runs: {
+        message: "Your final project didn't run. Fix it with these steps:",
+        steps: [
+          "Check every print(...) line has matching quotes and parentheses",
+          "Check the for loop line ends with a colon :",
+          "Check import turtle is still on its own line",
+          "Press ▶ Run and fix any red error message",
+        ],
+      },
+      codeChanged: {
+        message: "Make it about YOU — change the starter info.",
+        steps: [
+          "Change name, age, and hobbies to your own",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      minLines: {
+        message: "Output needs at least 4 lines.",
+        steps: [
+          "Keep the About Me prints and the hobby loop",
+          "Press ▶ Run and count the lines in Output",
+        ],
+      },
+      usesTurtle: {
+        message: "Your turtle drawing is missing.",
+        steps: [
+          "Keep: import turtle and t = turtle.Turtle()",
+          "Pick your own t.color(...)",
+          "Keep the for loop that draws the square",
+        ],
+      },
+    },
     21: {
       runs: {
         message: "Python couldn't run your function. Fix it with these steps:",
@@ -333,6 +393,189 @@ const UnstuckGuide = (() => {
           "Change the message to your own funny line",
           "Keep the quotes around your message",
           "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+    },
+    26: {
+      runs: {
+        message: "Python couldn't run your list comprehension. Fix it with these steps:",
+        steps: [
+          "Check the brackets: evens = [n for n in nums if n % 2 == 0]",
+          "for and if go inside the [ ] — no colon needed here",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      codeChanged: {
+        message: "Change the condition so it keeps different numbers.",
+        steps: [
+          "Find: if n % 2 == 0",
+          "Change it to: if n > 2",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      contains: {
+        message: "Output doesn't show [3, 4, 5] yet.",
+        steps: [
+          "Change n % 2 == 0 to n > 2 inside the [ ]",
+          "Keep nums = [1, 2, 3, 4, 5] the same",
+          "Press ▶ Run and check Output shows [3, 4, 5]",
+        ],
+      },
+    },
+    27: {
+      runs: {
+        message: "Python couldn't run your slicing code. Fix it with these steps:",
+        steps: [
+          "Check the colons inside the brackets: nums[1:4]",
+          "Make sure every [ ] has a matching close bracket",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      codeChanged: {
+        message: "Change the first line to grab the LAST three numbers.",
+        steps: [
+          "Find: print(nums[1:4])",
+          "Change it to: print(nums[-3:])",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      contains: {
+        message: "Output doesn't show [40, 50, 60] yet.",
+        steps: [
+          "Change nums[1:4] to nums[-3:] on the first print line",
+          "-3: means 'start 3 from the end, go to the end'",
+          "Press ▶ Run and check Output shows [40, 50, 60]",
+        ],
+      },
+    },
+    28: {
+      runs: {
+        message: "Python couldn't run your tuples & sets code. Fix it with these steps:",
+        steps: [
+          "Tuples use ( ) — check point = (3, 4) has both parentheses",
+          "set(...) needs a list inside its parentheses",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      codeChanged: {
+        message: "Change the point tuple and add a repeated number.",
+        steps: [
+          "Change point = (3, 4) to point = (7, 9)",
+          "Add another repeated number to the numbers list",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      codeContains: {
+        message: "Your code still needs both 7 and 9.",
+        steps: [
+          "Find: point = (3, 4)",
+          "Change it to: point = (7, 9)",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+    },
+    29: {
+      runs: {
+        message: "Python couldn't run your dictionary loop. Fix it with these steps:",
+        steps: [
+          "Line 3 must be: for name, score in scores.items():  (with a colon!)",
+          "The print line under it must be indented",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      codeChanged: {
+        message: "Add a new player to the scores dictionary.",
+        steps: [
+          "Find: scores = {\"Ana\": 92, \"Sam\": 85, \"Kai\": 78}",
+          "Add one more name and score, like \"Lee\": 95",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      minLines: {
+        message: "Output needs at least 4 lines.",
+        steps: [
+          "Keep the for loop that prints every name and score",
+          "Add another player so there's one more line of Output",
+          "Press ▶ Run and count the lines",
+        ],
+      },
+    },
+    30: {
+      runs: {
+        message: "Python couldn't run your function. Fix it with these steps:",
+        steps: [
+          "Line 1 must be: def greet(name, greeting=\"Hello\"):  (with a colon!)",
+          "The return line must be indented under def",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      codeChanged: {
+        message: "Call greet() a third time with your own name and greeting.",
+        steps: [
+          "Add a new line: print(greet(\"YourName\", \"Yo\"))",
+          "Use your own name and greeting word",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      minLines: {
+        message: "Output needs at least 3 lines.",
+        steps: [
+          "Keep both starter print(greet(...)) lines",
+          "Add one more print(greet(...)) call",
+          "Press ▶ Run and count the lines in Output",
+        ],
+      },
+    },
+    31: {
+      runs: {
+        message: "Python couldn't run your Robot class. Fix it with these steps:",
+        steps: [
+          "Line 1 must be: class Robot:  (with a colon!)",
+          "def __init__(self, name, battery): needs self first, then a colon",
+          "Every line inside __init__ must be indented",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      codeChanged: {
+        message: "Create a second Robot with your own name and battery level.",
+        steps: [
+          "Add: bot2 = Robot(\"YourName\", 50)",
+          "Add: print(bot2.status())",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      minLines: {
+        message: "Add both a new Robot and a print for it.",
+        steps: [
+          "Make a second robot: bot2 = Robot(\"YourName\", 50)",
+          "Print its status: print(bot2.status())",
+          "Press ▶ Run and check Output shows two robots",
+        ],
+      },
+    },
+    32: {
+      runs: {
+        message: "Python couldn't run your temperature code. Fix it with these steps:",
+        steps: [
+          "Check the for loop line ends with a colon :",
+          "The f = c * 9 / 5 + 32 line must be indented under the for loop",
+          "Press ▶ Run — fix any red error before Check my work",
+        ],
+      },
+      codeChanged: {
+        message: "Add one more temperature to the list.",
+        steps: [
+          "Find: temperatures_celsius = [0, 10, 20, 30, 40]",
+          "Add another number, like 50",
+          "Press ▶ Run, then ⭐ Check my work",
+        ],
+      },
+      minLength: {
+        message: "Nothing showed in the Output box yet.",
+        steps: [
+          "Press ▶ Run first",
+          "You should see a list of Fahrenheit temperatures print",
+          "If Output is empty, check for a red error message above",
         ],
       },
     },

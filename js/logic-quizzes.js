@@ -229,6 +229,104 @@ const LOGIC_QUESTIONS = {
       explain: "The except block catches the crash and sets x to 0 before printing.",
     },
   ],
+  26: [
+    {
+      question: "squares = [n * n for n in [1, 2, 3]]. What does squares equal?",
+      options: ["[1, 4, 9]", "[1, 2, 3]", "[2, 4, 6]"],
+      answer: 0,
+      explain: "Each n is squared: 1*1=1, 2*2=4, 3*3=9.",
+    },
+    {
+      question: "[n for n in range(5) if n % 2 == 0] — which numbers make it in?",
+      options: ["[0, 2, 4]", "[1, 3]", "[0, 1, 2, 3, 4]"],
+      answer: 0,
+      explain: "Only numbers where n % 2 == 0 pass the if check — the even ones.",
+    },
+  ],
+  27: [
+    {
+      question: "letters = [\"a\", \"b\", \"c\", \"d\", \"e\"]. What does letters[1:3] give?",
+      options: ["['b', 'c']", "['a', 'b', 'c']", "['c', 'd']"],
+      answer: 0,
+      explain: "Start at index 1, stop before index 3 — that's 'b' and 'c'.",
+    },
+    {
+      question: "nums = [10, 20, 30]. What does nums[::-1] give?",
+      options: ["[30, 20, 10]", "[10, 20, 30]", "[]"],
+      answer: 0,
+      explain: "::-1 walks the list backward, reversing the whole thing.",
+    },
+  ],
+  28: [
+    {
+      question: "point = (3, 4). What does point[0] give?",
+      options: ["3", "4", "(3, 4)"],
+      answer: 0,
+      explain: "Index 0 is the first item in the tuple, which is 3.",
+    },
+    {
+      question: "Once a tuple like (3, 4) is made, can you change what's inside it?",
+      options: ["No, tuples are locked", "Yes, anytime", "Only the first item"],
+      answer: 0,
+      explain: "Tuples can't be changed after they're created — that's what makes them different from lists.",
+    },
+  ],
+  29: [
+    {
+      question: "for name, score in scores.items(): — what does name become?",
+      options: ["Each key, one at a time", "Each value, one at a time", "Always the same key"],
+      answer: 0,
+      explain: ".items() hands you the key and value together, so name takes each key in turn.",
+    },
+    {
+      question: "scores.get(\"Al\", 0) and \"Al\" isn't a key. What happens?",
+      options: ["It returns 0 instead of crashing", "The program crashes", "It adds \"Al\" to the dictionary"],
+      answer: 0,
+      explain: ".get() falls back to the default value you give it instead of crashing.",
+    },
+  ],
+  30: [
+    {
+      question: "def greet(name, greeting=\"Hi\"): ... greet(\"Sam\") — what does greeting become?",
+      options: ["\"Hi\"", "\"Sam\"", "Nothing"],
+      answer: 0,
+      explain: "No second argument was passed, so greeting falls back to its default, \"Hi\".",
+    },
+    {
+      question: "def power(base, exponent=2): return base ** exponent. What does power(3) return?",
+      options: ["9", "6", "3"],
+      answer: 0,
+      explain: "exponent defaults to 2, and 3 ** 2 = 9.",
+    },
+  ],
+  31: [
+    {
+      question: "class Robot: def __init__(self, name): self.name = name. bot = Robot(\"Rusty\"). What is bot.name?",
+      options: ["\"Rusty\"", "\"name\"", "\"self\""],
+      answer: 0,
+      explain: "__init__ saves the argument you passed in, \"Rusty\", onto self.name.",
+    },
+    {
+      question: "Inside a class's methods, what does self refer to?",
+      options: ["The specific object using the method", "Every object of every class", "The class name itself"],
+      answer: 0,
+      explain: "self always means 'this one object' — each object keeps its own data separate.",
+    },
+  ],
+  32: [
+    {
+      question: "What does 'vectorization' mean in NumPy?",
+      options: ["Doing math on a whole list at once, no loop needed", "Drawing vectors with turtle", "Deleting a list"],
+      answer: 0,
+      explain: "Vectorization applies an operation to every item in a list at once, instead of looping one at a time.",
+    },
+    {
+      question: "Which of these is a real Python library used for making charts?",
+      options: ["Matplotlib", "Skulpt", "Turtle"],
+      answer: 0,
+      explain: "Matplotlib is the standard library data scientists use to draw graphs and charts.",
+    },
+  ],
 };
 
 function getLogicQuestions(lessonId) {

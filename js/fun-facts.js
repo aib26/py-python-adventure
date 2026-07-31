@@ -159,6 +159,90 @@ const LESSON_FUN_FACTS = {
       fact: "The first computer 'bug' was an actual real moth, found stuck in a Harvard computer relay in 1947!",
     },
   ],
+  26: [
+    {
+      topic: "Coding",
+      emoji: "⚡",
+      fact: "Because list comprehensions run as one optimized step, they're often noticeably faster than the exact same loop written line by line!",
+    },
+    {
+      topic: "Culture",
+      emoji: "🎯",
+      fact: "Programmers sometimes call short, clear code like this 'Pythonic' — code that solves a problem the way Python was designed for!",
+    },
+  ],
+  27: [
+    {
+      topic: "Coding",
+      emoji: "✂️",
+      fact: "Slicing isn't just for lists — it works the exact same way on strings, so \"hello\"[1:4] grabs 'ell'!",
+    },
+    {
+      topic: "Culture",
+      emoji: "🎬",
+      fact: "list[::-1] reversing a sequence uses the same 'play it backward' idea video editors use to reverse a clip!",
+    },
+  ],
+  28: [
+    {
+      topic: "Coding",
+      emoji: "🔒",
+      fact: "Because tuples can't change, Python lets you use them as dictionary keys — something a list is never allowed to do!",
+    },
+    {
+      topic: "Culture",
+      emoji: "🎒",
+      fact: "A set works a lot like a school locker that automatically kicks out any duplicate item you try to shove in twice!",
+    },
+  ],
+  29: [
+    {
+      topic: "Coding",
+      emoji: "📇",
+      fact: "Real apps use .get() with a default constantly — it's how they avoid crashing when a setting or username hasn't been created yet!",
+    },
+    {
+      topic: "Science",
+      emoji: "🌐",
+      fact: "Websites send data between a server and your browser using structures a lot like dictionaries, every single time a page loads!",
+    },
+  ],
+  30: [
+    {
+      topic: "Coding",
+      emoji: "🎛️",
+      fact: "Tons of real Python functions use default arguments — print() secretly has one, end=\"\\n\", that adds a new line for you!",
+    },
+    {
+      topic: "Culture",
+      emoji: "🍕",
+      fact: "Default arguments work like ordering a pizza with 'the usual' — you only mention toppings when you want something different!",
+    },
+  ],
+  31: [
+    {
+      topic: "Coding",
+      emoji: "🏭",
+      fact: "Almost everything in Python is secretly an object built from a class — even a simple number or string has methods living inside it!",
+    },
+    {
+      topic: "Science",
+      emoji: "🎮",
+      fact: "Video game characters are usually built with classes — one Player blueprint, then a brand-new object for every player who joins!",
+    },
+  ],
+  32: [
+    {
+      topic: "Coding",
+      emoji: "⚡",
+      fact: "Vectorized NumPy code isn't just shorter — it's often 10 to 100 times faster than a plain Python loop doing the same math!",
+    },
+    {
+      topic: "Science",
+      emoji: "🛰️",
+      fact: "NASA, weather forecasters, and self-driving car researchers all rely on NumPy every day to crunch huge grids of numbers fast!",
+    },
+  ],
 };
 
 function getFunFactsForLesson(lessonId) {

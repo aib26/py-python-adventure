@@ -61,6 +61,71 @@ const FINAL_QUESTIONS = [
     options: ["Drawing a line", "Turning", "Starting Python"],
     answer: 0,
   },
+  {
+    question: "random.randint(1, 10) picks...?",
+    options: ["A surprise number between 1 and 10", "Always the number 10", "A letter"],
+    answer: 0,
+  },
+  {
+    question: "def add(a, b): return a + b. What does add(2, 3) give back?",
+    options: ["5", "23", "Nothing"],
+    answer: 0,
+  },
+  {
+    question: "student = {\"grade\": 5}. How do you look up the grade?",
+    options: ["student[\"grade\"]", "student(grade)", "grade.student"],
+    answer: 0,
+  },
+  {
+    question: "What keeps a while loop running?",
+    options: ["Its condition staying True", "Pressing a key", "A random number"],
+    answer: 0,
+  },
+  {
+    question: "A loop inside another loop is called a...?",
+    options: ["Nested loop", "Broken loop", "Double variable"],
+    answer: 0,
+  },
+  {
+    question: "try/except is used to...?",
+    options: ["Catch an error so the program doesn't crash", "Delete your code", "Make the turtle move"],
+    answer: 0,
+  },
+  {
+    question: "[n * n for n in [1, 2, 3]] is an example of a...?",
+    options: ["List comprehension", "Dictionary", "Turtle command"],
+    answer: 0,
+  },
+  {
+    question: "nums[1:3] is called...?",
+    options: ["Slicing", "Looping", "Importing"],
+    answer: 0,
+  },
+  {
+    question: "Which one CANNOT be changed after it's created?",
+    options: ["A tuple", "A list", "A dictionary"],
+    answer: 0,
+  },
+  {
+    question: "for key, value in d.items(): gives you...?",
+    options: ["Both the key and value together", "Only the keys", "Only the values"],
+    answer: 0,
+  },
+  {
+    question: "def greet(name, greeting=\"Hi\"): — what is \"Hi\"?",
+    options: ["A default value", "A required value", "An error"],
+    answer: 0,
+  },
+  {
+    question: "In a class, __init__ runs...?",
+    options: ["Automatically when a new object is created", "Only when you call it by name", "Never"],
+    answer: 0,
+  },
+  {
+    question: "What does NumPy help programmers do?",
+    options: ["Do math on a whole list of numbers at once", "Draw with a turtle", "Print text"],
+    answer: 0,
+  },
 ];
 
 function getFinalQuizQuestions() {

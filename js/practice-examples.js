@@ -174,6 +174,55 @@ const PRACTICE_EXAMPLES = {
     { title: "Try that works", prompt: "When there is no problem, except is skipped.", code: 'try:\n    print(10 / 2)\nexcept ZeroDivisionError:\n    print("Oops!")' },
     { title: "Two number check", prompt: "Catch a bad number conversion.", code: 'try:\n    age = int("nine")\n    print(age)\nexcept ValueError:\n    print("Please use a real number!")' },
   ],
+  26: [
+    { title: "Square them", prompt: "Square every number in one line.", code: 'nums = [1, 2, 3, 4]\nsquares = [n * n for n in nums]\nprint(squares)' },
+    { title: "Doubles", prompt: "Double every number.", code: 'nums = [2, 4, 6]\ndoubled = [n * 2 for n in nums]\nprint(doubled)' },
+    { title: "Just the evens", prompt: "Keep only even numbers.", code: 'nums = [1, 2, 3, 4, 5, 6]\nevens = [n for n in nums if n % 2 == 0]\nprint(evens)' },
+    { title: "Big numbers only", prompt: "Keep numbers greater than 10.", code: 'nums = [5, 12, 8, 20, 3]\nbig = [n for n in nums if n > 10]\nprint(big)' },
+    { title: "Add one to each", prompt: "Build a new list with one added.", code: 'nums = [10, 20, 30]\nplus_one = [n + 1 for n in nums]\nprint(plus_one)' },
+  ],
+  27: [
+    { title: "First two", prompt: "Grab the first two items.", code: 'nums = [1, 2, 3, 4, 5]\nprint(nums[:2])' },
+    { title: "Middle chunk", prompt: "Grab items 1 through 3.", code: 'nums = [10, 20, 30, 40, 50]\nprint(nums[1:4])' },
+    { title: "Last two", prompt: "Grab the last two items.", code: 'nums = [1, 2, 3, 4, 5]\nprint(nums[-2:])' },
+    { title: "Reverse it", prompt: "Print a list backward.", code: 'letters = ["a", "b", "c", "d"]\nprint(letters[::-1])' },
+    { title: "Skip every other", prompt: "Grab every other item.", code: 'nums = [1, 2, 3, 4, 5, 6]\nprint(nums[::2])' },
+  ],
+  28: [
+    { title: "A coordinate", prompt: "Store an (x, y) point.", code: 'point = (5, 12)\nprint("x:", point[0], "y:", point[1])' },
+    { title: "RGB tuple", prompt: "Three numbers that shouldn't change.", code: 'color = (255, 0, 0)\nprint(color)' },
+    { title: "Remove duplicates", prompt: "Turn a list into a set.", code: 'letters = ["a", "b", "a", "c", "b"]\nunique = set(letters)\nprint(sorted(unique))' },
+    { title: "Unique scores", prompt: "How many different scores were there?", code: 'scores = [90, 85, 90, 100, 85]\nunique_scores = set(scores)\nprint(len(unique_scores))' },
+    { title: "Two points", prompt: "Two tuples in one print.", code: 'a = (0, 0)\nb = (3, 4)\nprint(a, b)' },
+  ],
+  29: [
+    { title: "Loop through pets", prompt: "Print every name and pet.", code: 'pets = {"Ana": "cat", "Sam": "dog"}\nfor name, pet in pets.items():\n    print(name, "has a", pet)' },
+    { title: "Safe lookup", prompt: "Use .get() so it never crashes.", code: 'ages = {"Kai": 9}\nprint(ages.get("Mia", "unknown"))' },
+    { title: "Total up the values", prompt: "Add every score together.", code: 'scores = {"Ana": 10, "Sam": 20}\ntotal = 0\nfor name, score in scores.items():\n    total = total + score\nprint(total)' },
+    { title: "Print just the keys", prompt: "Loop but only use the key.", code: 'colors = {"sky": "blue", "grass": "green"}\nfor thing, color in colors.items():\n    print(thing)' },
+    { title: "Backup grade", prompt: "Get a grade with a default.", code: 'grades = {"Ana": "A"}\nprint(grades.get("Sam", "no grade yet"))' },
+  ],
+  30: [
+    { title: "Default greeting", prompt: "Call with just a name.", code: 'def greet(name, greeting="Hello"):\n    return greeting + ", " + name + "!"\n\nprint(greet("Milo"))' },
+    { title: "Custom greeting", prompt: "Pass your own greeting too.", code: 'def greet(name, greeting="Hello"):\n    return greeting + ", " + name + "!"\n\nprint(greet("Ava", "Hiya"))' },
+    { title: "Default power", prompt: "Square by default.", code: 'def power(base, exponent=2):\n    return base ** exponent\n\nprint(power(4))' },
+    { title: "Custom exponent", prompt: "Cube instead of square.", code: 'def power(base, exponent=2):\n    return base ** exponent\n\nprint(power(2, 3))' },
+    { title: "Default message", prompt: "A function with a backup message.", code: 'def cheer(name, message="You got this!"):\n    return name + ": " + message\n\nprint(cheer("Sam"))' },
+  ],
+  31: [
+    { title: "One pet", prompt: "Build a single Pet object.", code: 'class Pet:\n    def __init__(self, name, sound):\n        self.name = name\n        self.sound = sound\n\ncat = Pet("Whiskers", "Meow")\nprint(cat.name, "says", cat.sound)' },
+    { title: "Two robots", prompt: "Same blueprint, two objects.", code: 'class Robot:\n    def __init__(self, name, battery):\n        self.name = name\n        self.battery = battery\n\nbot1 = Robot("Rusty", 80)\nbot2 = Robot("Bolt", 45)\nprint(bot1.name, bot1.battery)\nprint(bot2.name, bot2.battery)' },
+    { title: "A method that acts", prompt: "Call a method on an object.", code: 'class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        return self.name + " says Woof!"\n\nd = Dog("Rex")\nprint(d.bark())' },
+    { title: "Player class", prompt: "Track a score on an object.", code: 'class Player:\n    def __init__(self, name, score):\n        self.name = name\n        self.score = score\n\np = Player("Jordan", 0)\nprint(p.name, "has", p.score, "points")' },
+    { title: "A car object", prompt: "Object with two pieces of data.", code: 'class Car:\n    def __init__(self, brand, speed):\n        self.brand = brand\n        self.speed = speed\n\n    def status(self):\n        return self.brand + " is going " + str(self.speed) + " mph"\n\nmy_car = Car("Zoomer", 60)\nprint(my_car.status())' },
+  ],
+  32: [
+    { title: "Loop version", prompt: "Convert Celsius to Fahrenheit with a loop.", code: 'c = [0, 100]\nf = []\nfor temp in c:\n    f.append(temp * 9 / 5 + 32)\nprint(f)' },
+    { title: "Add ten to each", prompt: "A loop that adds 10 to every number.", code: 'nums = [1, 2, 3]\nresult = []\nfor n in nums:\n    result.append(n + 10)\nprint(result)' },
+    { title: "Double every price", prompt: "Loop-based doubling, like NumPy would do in one line.", code: 'prices = [5, 10, 15]\ndoubled = []\nfor p in prices:\n    doubled.append(p * 2)\nprint(doubled)' },
+    { title: "Average with a loop", prompt: "Find the average the loop way.", code: 'nums = [10, 20, 30]\ntotal = 0\nfor n in nums:\n    total = total + n\nprint(total / len(nums))' },
+    { title: "Bigger list", prompt: "Same idea, more numbers.", code: 'nums = [1, 2, 3, 4, 5, 6]\nsquares = []\nfor n in nums:\n    squares.append(n * n)\nprint(squares)' },
+  ],
 };
 
 function getPracticeExamples(lessonId) {
