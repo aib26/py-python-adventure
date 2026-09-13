@@ -1555,7 +1555,7 @@ textarea.code-editor:focus {
   height: 14px;
   border-radius: 3px;
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-  animation: fall 1.9s ease-in forwards;
+  animation: fall 2.2s ease-in forwards;
 }
 
 .confetti span:nth-child(3n) {
@@ -1563,7 +1563,32 @@ textarea.code-editor:focus {
 }
 
 @keyframes fall {
-  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  to { transform: translateY(110vh) translateX(var(--drift, 0)) rotate(var(--rot-end, 720deg)); opacity: 0; }
+}
+
+/* Cannon pieces launch from the bottom corners and arc up and across the
+   screen before falling — combined with the top-rain pieces above, this
+   fills the whole viewport ("Golden Buzzer" style) instead of a thin strip
+   raining from just the top. */
+.confetti span.cannon {
+  top: auto;
+  bottom: -10px;
+  animation-name: cannon-arc;
+  animation-timing-function: cubic-bezier(0.15, 0.85, 0.32, 1);
+  animation-duration: 2.6s;
+}
+
+.confetti span.cannon-left { left: -10px; }
+.confetti span.cannon-right { right: -10px; }
+
+@keyframes cannon-arc {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  45% { transform: translate(var(--dx-mid, 40vw), var(--peak, -65vh)) rotate(var(--rot-mid, 320deg)); }
+  100% { transform: translate(var(--dx-end, 60vw), 12vh) rotate(var(--rot-end, 900deg)); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti { display: none; }
 }
 
 .success-burst {

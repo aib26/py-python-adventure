@@ -102,22 +102,53 @@ function showLessonFeedback(feedbackEl, verdict) {
   feedbackEl.innerHTML = html;
 }
 
-function launchConfetti() {
+// Rains pieces from the top AND fires two corner "cannons" that arc up and
+// across the screen, so a celebration fills the whole viewport (Golden
+// Buzzer style) instead of a thin strip drifting down from the top edge.
+function launchConfetti(pieceCount = 55) {
   const layer = document.createElement("div");
   layer.className = "confetti";
   const colors = ["#ff6b6b", "#ffd93d", "#6bcb77", "#4d96ff", "#ff85c0", "#9b5de5"];
+  const rainCount = Math.round(pieceCount * 0.45);
+  const cannonCount = Math.round((pieceCount - rainCount) / 2);
 
-  for (let i = 0; i < 55; i += 1) {
+  const makePiece = (className) => {
     const piece = document.createElement("span");
-    piece.style.left = Math.random() * 100 + "%";
-    piece.style.background = colors[i % colors.length];
-    piece.style.animationDelay = Math.random() * 0.5 + "s";
+    piece.className = className;
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
     piece.style.width = 8 + Math.random() * 8 + "px";
+    piece.style.animationDelay = Math.random() * 0.5 + "s";
+    return piece;
+  };
+
+  for (let i = 0; i < rainCount; i += 1) {
+    const piece = makePiece("");
+    piece.style.left = Math.random() * 100 + "%";
+    piece.style.setProperty("--drift", (Math.random() * 16 - 8) + "vw");
+    piece.style.setProperty("--rot-end", 480 + Math.random() * 480 + "deg");
     layer.appendChild(piece);
   }
 
+  for (let i = 0; i < cannonCount; i += 1) {
+    const left = makePiece("cannon cannon-left");
+    left.style.setProperty("--dx-mid", 22 + Math.random() * 30 + "vw");
+    left.style.setProperty("--dx-end", 35 + Math.random() * 45 + "vw");
+    left.style.setProperty("--peak", -(45 + Math.random() * 35) + "vh");
+    left.style.setProperty("--rot-mid", 180 + Math.random() * 360 + "deg");
+    left.style.setProperty("--rot-end", 600 + Math.random() * 480 + "deg");
+    layer.appendChild(left);
+
+    const right = makePiece("cannon cannon-right");
+    right.style.setProperty("--dx-mid", -(22 + Math.random() * 30) + "vw");
+    right.style.setProperty("--dx-end", -(35 + Math.random() * 45) + "vw");
+    right.style.setProperty("--peak", -(45 + Math.random() * 35) + "vh");
+    right.style.setProperty("--rot-mid", -(180 + Math.random() * 360) + "deg");
+    right.style.setProperty("--rot-end", -(600 + Math.random() * 480) + "deg");
+    layer.appendChild(right);
+  }
+
   document.body.appendChild(layer);
-  setTimeout(() => layer.remove(), 2400);
+  setTimeout(() => layer.remove(), 2900);
 }
 
 function buildLessonCard(lesson, options = {}) {
@@ -636,6 +667,7 @@ function renderLessonPage() {
         LessonUI.showFunFact(id, () => {
           LessonUI.showRecapQuiz(id, (percent) => {
             if (percent === 100) {
+              launchConfetti(24);
               LessonUI.showSuccessBurst("Perfect recap! 🧠");
               if (AppStore.awardPerfectRecapPySnack(id)) {
                 setTimeout(() => LessonUI.showSuccessBurst("Snack for Py 🍪"), 1600);
@@ -715,6 +747,7 @@ function renderLessonPage() {
       }
       feedback.textContent = verdict.message + " Tap 🧠 Lesson quizzes when you're ready.";
       feedback.className = "feedback show success";
+      launchConfetti(24);
       LessonUI.showSuccessBurst("Challenge passed! 🎯");
     } else {
       showLessonFeedback(feedback, verdict);
