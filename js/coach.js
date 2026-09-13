@@ -5,112 +5,112 @@ const CoachPy = (() => {
       question:
         "Try adding print(\"hello\") as a new line in your code and press ▶ Run. What showed up in the Output box?",
       answer:
-        "print() shows text on the screen. Words go in quotes: print(\"Hi\"). Numbers can skip quotes: print(42).",
+        "print() is like a megaphone — whatever you put inside the parentheses gets announced on the screen. Words go in quotes: print(\"Hi\"). Numbers can skip quotes: print(42).",
     },
     variable: {
       match: ["variable", "variables", "store", "save", "memory", "equals sign"],
       question:
         "Look at your code: does the word right before the = sign have quotes around it? What about the value after it? What do you think that difference means?",
       answer:
-        "A variable is a name for a value. name = \"Alex\" saves your name. print(name) shows what's saved — no quotes on the variable name!",
+        "A variable is like a cubby with a name label on it, like at school. name = \"Alex\" puts \"Alex\" inside the cubby labeled name. print(name) peeks inside — no quotes on the label itself, only on what's stored inside!",
     },
     loop: {
       match: ["loop", "loops", "repeat", "range", "for loop"],
       question:
         "Find the for line in your code and press ▶ Run. Count how many times something printed — why do you think it printed that many times?",
       answer:
-        "A for loop repeats code. for i in range(5): runs 5 times. Lines under for: must be indented (scooted right).",
+        "A for loop is like handing out one cookie to every kid in a lunch line — you do the same thing once per person. for i in range(5): hands out 5 cookies (runs 5 times). Lines under for: must be indented (scooted right).",
     },
     list: {
       match: ["list", "lists", "bracket", "index", "[0]", "shopping list"],
       question:
         "Look at the list in your code. If you counted the items starting from 0 instead of 1, which item would be number 0?",
       answer:
-        "A list holds items in order: [\"a\", \"b\", \"c\"]. The first item is [0], second is [1] — computers start at 0!",
+        "A list is like a row of cubbies at school holding items in order: [\"a\", \"b\", \"c\"]. But Python labels cubbies starting at 0, not 1 — so the first item is [0], the second is [1]!",
     },
     if: {
       match: ["if else", "if/else", "true", "false", "condition", "decision"],
       question:
         "Try changing the condition in your if line to something you think is False, then run it. Which block ran — if, or else? Why?",
       answer:
-        "if checks True or False. True runs the if block. False runs else. Don't forget the colon : at the end of the if line!",
+        "if/else is like a choose-your-own-adventure book: if you found the key, go left; else, go right. Python checks True or False — True runs the if block, False runs else. Don't forget the colon : at the end of the if line!",
     },
     turtle: {
       match: ["turtle", "forward", "backward", "left", "right", "penup", "pendown", "draw", "canvas"],
       question:
         "Run your code and watch the canvas. Which line do you think made the turtle move, and which one made it turn?",
       answer:
-        "Turtle draws as it moves. forward() walks, left()/right() turn. penup() lifts the pen to jump without drawing. Check the canvas below!",
+        "Turtle is like remote-controlling a toy car with a marker taped to it: forward()/backward() drive it, left()/right() steer it, and penup() lifts the marker so it can move without drawing a line. Check the canvas below!",
     },
     random: {
       match: ["random", "dice", "secret number", "randint"],
       question:
         "Press ▶ Run three times in a row. Does the number change each time? Why do you think that happens?",
       answer:
-        "random.randint(1, 10) picks a surprise number from 1 to 10. Run your code a few times — the answer changes each time!",
+        "random.randint(1, 10) is like rolling a 10-sided die — it picks a surprise number from 1 to 10. Run your code a few times — you'll roll a different number almost every time!",
     },
     math: {
       match: ["math", "add", "subtract", "multiply", "divide", "plus", "minus"],
       question: "Before you run it — can you guess what number the math line in your code will print?",
-      answer: "Python does math with + - * /. Example: print(10 + 5) shows 15.",
+      answer: "Python does math just like counting allowance money: + adds more, - spends some, * multiplies it (like doubling your allowance!), and / splits it evenly, like sharing candy with friends. Example: print(10 + 5) shows 15.",
     },
     indent: {
       match: ["indent", "indentation", "scoot", "tab", "spaces under"],
       question:
         "Look at the line right under your for or if line — is it lined up with for/if, or moved to the right? What do you think that spacing tells Python?",
       answer:
-        "Lines under for: or if: must be scooted to the RIGHT (press Tab). They should not line up with the for/if line.",
+        "Indenting is like listing ingredients tucked under a recipe title — the tuck-in shows they belong to that step. Lines under for: or if: must be scooted to the RIGHT (press Tab), not lined up with the for/if line.",
     },
     quotes: {
       match: ["quote", "quotes", "apostrophe", "string"],
       question: "Count the quote marks in your code. Do they come in even pairs? What do you think happens if one is missing?",
-      answer: 'Words need matching quotes: "like this" or \'like this\'. Every opening quote needs a closing one.',
+      answer: 'Quotes are like two bookends holding your words up: "like this" or \'like this\'. Every opening quote needs a closing one, or the words in between come tumbling down (an error)!',
     },
     colon: {
       match: ["colon"],
       question: "Look at the very end of your for or if line. What character is sitting there?",
-      answer: "for and if lines end with a colon : — like for i in range(5): or if ready:",
+      answer: "A colon is like the ':' before a list of chores — it tells Python \"here comes what to do next.\" for and if lines end with one — like for i in range(5): or if ready:",
     },
     output: {
       match: ["output", "output box", "nothing printed", "blank output"],
       question: "Have you pressed ▶ Run yet? What's the very first thing worth checking if Output looks empty?",
       answer:
-        "Press ▶ Run to fill the Output box. For turtle lessons, also check the canvas below — empty Output can be OK if you see a drawing!",
+        "The Output box is like the TV screen for your code's game console — nothing shows until you turn it on. Press ▶ Run to fill it. For turtle lessons, also check the canvas below — empty Output can be OK if you see a drawing!",
     },
     function: {
       match: ["function", "functions", "def", "parameter", "parameters", "return", "call a function"],
       question:
         "Find the def line in your code — does that line alone make anything run? Look further down: which line actually calls it?",
       answer:
-        "def name(parameter): starts a function — a reusable block of code. Lines under it are indented. Call it later with name(value). return sends a value back so you can use it, like answer = add(2, 3).",
+        "A function is like a recipe card: def name(parameter): writes the recipe once. Lines under it are the steps (indented). Calling it later with name(value) is like cooking that recipe again anytime. return hands back a finished dish you can use, like answer = add(2, 3).",
     },
     dictionary: {
       match: ["dictionary", "dictionaries", "dict", "key", "value pair", "key value", "curly braces"],
       question:
         "Look at your dictionary. What's on the left of each colon, and what's on the right? What do you think the left side is used for?",
       answer:
-        'A dictionary stores key → value pairs in curly braces: pet = {"name": "Rex", "age": 3}. Use the key in brackets to get the value: pet["name"] shows Rex.',
+        'A dictionary is like a contacts list in a phone: the name is the key, the phone number is the value. pet = {"name": "Rex", "age": 3} stores key → value pairs in curly braces. Use the key in brackets to get the value: pet["name"] shows Rex.',
     },
     while: {
       match: ["while", "while loop", "keep going", "until"],
       question:
         "Look at the condition in your while line. What do you think happens if that condition never becomes False?",
       answer:
-        "A while loop repeats AS LONG AS its condition is True: while count < 5: keeps going until count reaches 5. Make sure something inside the loop changes the condition, or it repeats forever!",
+        "A while loop is like bouncing a ball while your arm isn't tired — it keeps going as long as that's True. while count < 5: keeps going until count reaches 5. Make sure something inside the loop changes the condition, or it repeats forever (your arm never gets tired)!",
     },
     nested: {
       match: ["nested loop", "nested", "loop inside a loop", "double loop", "grid", "pattern"],
       question:
         "Run your code and count: does the inner loop run just once total, or once for every single trip of the outer loop?",
       answer:
-        "A nested loop is a loop inside another loop. The inner loop finishes all its trips for every single trip of the outer loop — great for grids and patterns!",
+        "A nested loop is like brushing every single tooth (inner loop) each day of the week (outer loop) — the whole inner job finishes for every single trip of the outer loop. Great for grids and patterns!",
     },
     tryexcept: {
       match: ["try", "except", "error handling", "catch an error", "try except"],
       question:
         "What do you think try does with the code inside it — wait for an error before doing anything, or try to run it right away?",
       answer:
-        "try: lets Python attempt risky code. If it fails, except: catches the error instead of crashing, so you can print a friendly message instead.",
+        "try/except is like wearing a helmet before riding your bike: try: attempts the risky code, and if something goes wrong (you fall), except: catches it with a friendly message instead of crashing (getting hurt).",
     },
   };
 
@@ -443,6 +443,13 @@ const CoachPy = (() => {
   // pointing the kid at their own code/output — rather than the definition
   // handed over cold. Asking again (or saying "idk"/"just tell me") unlocks
   // the real answer, so a stuck kid is never stonewalled.
+  function revealConcept(key, state) {
+    state.pendingConcept = null;
+    const concept = CONCEPTS[key];
+    const extra = state.lesson.syntaxNote ? `\n\nFor this lesson: ${stripHtml(state.lesson.syntaxNote)}` : "";
+    return concept.answer + extra;
+  }
+
   function respondConcept(message, state) {
     const concept = matchConcept(message);
     if (!concept) {
@@ -456,11 +463,11 @@ const CoachPy = (() => {
     const givingUp = includesAny(normalize(message), GIVE_UP_PHRASES);
 
     if (concept.question && !askedBefore && !givingUp) {
-      return `${concept.question}\n\nHave a guess, then ask me again (or tell me your guess!) and I'll confirm.`;
+      state.pendingConcept = key;
+      return `${concept.question}\n\nHave a guess, then tell me your guess (or say "idk") and I'll confirm.`;
     }
 
-    const extra = state.lesson.syntaxNote ? `\n\nFor this lesson: ${stripHtml(state.lesson.syntaxNote)}` : "";
-    return concept.answer + extra;
+    return revealConcept(key, state);
   }
 
   function respondExplain(message, state) {
@@ -508,6 +515,16 @@ const CoachPy = (() => {
     const clean = ContentGuardrails.filterCoachMessage(message);
     const intent = matchIntent(clean);
     const { lesson } = state;
+
+    // A guess or "idk" after a Socratic question rarely matches any real
+    // intent on its own (no lesson keywords in "each kid gets one!"), so it
+    // would otherwise fall through to the generic "not sure what you mean"
+    // reply. If a concept question is still pending and this message isn't
+    // clearly asking something else, treat it as the kid's answer/give-up
+    // and resolve that concept instead of stonewalling them.
+    if (state.pendingConcept && (intent === "unknown" || intent === "explain") && !matchConcept(clean)) {
+      return revealConcept(state.pendingConcept, state);
+    }
 
     switch (intent) {
       case "greeting":

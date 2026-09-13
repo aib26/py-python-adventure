@@ -353,7 +353,7 @@ function renderHomePage() {
       } else {
         finalTitle.textContent = "🎓 Final Quiz — earn your certificate!";
         finalText.textContent =
-          "Answer 12 questions about everything you learned. Pass with 70% or higher to get your official Python Coder Certificate!";
+          `Answer ${getFinalQuizQuestions().length} questions about everything you learned. Pass with ${FINAL_QUIZ_PASS_PERCENT}% or higher to get your official Python Coder Certificate!`;
         finalActions.innerHTML = `
           <button class="btn btn-primary btn-bounce" id="start-final-quiz" type="button">Start final quiz 🎓</button>
         `;

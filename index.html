@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Py's Python Adventure</title>
-    <meta name="description" content="Learn real Python in the browser with Py's Python Adventure — 25+ interactive lessons across Beginner, Intermediate, and High School levels, with instant code feedback, jokes, quizzes, and a friendly mascot. No install needed." />
+    <meta name="description" content="Learn real Python in the browser with Py's Python Adventure — 32 interactive lessons across Beginner, Intermediate, and High School levels, with instant code feedback, jokes, quizzes, and a friendly mascot. No install needed." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192.png" />
     <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="css/styles.css?v=29" />
+    <link rel="stylesheet" href="css/styles.css?v=30" />
     <script>
       (function () {
         var saved = null;
@@ -34,6 +34,7 @@
       <header class="site-header">
         <img class="mascot-float" src="assets/mascot.svg?v=2" alt="Py the Python mascot" />
         <div>
+          <span class="header-kicker">🐍 100% free · nothing to install</span>
           <h1>Py's Python Adventure</h1>
           <p id="kid-greeting">Learn Python, one lesson at a time</p>
         </div>
@@ -66,9 +67,16 @@
         <div class="final-quiz-actions" id="final-quiz-actions"></div>
       </section>
 
-      <section class="hero-card panel" id="hero-intro">
-        <h2>Your Python adventure</h2>
-        <p>25 short lessons across three levels. Finish one, feed Py a snack. That's it!</p>
+      <section class="hero-card panel hero-intro-card" id="hero-intro">
+        <div class="hero-intro-copy">
+          <h2>Your Python adventure</h2>
+          <p>32 short lessons across three levels. Finish one, feed Py a snack. That's it!</p>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>32</strong><span>lessons</span></div>
+          <div class="hero-stat"><strong>3</strong><span>levels</span></div>
+          <div class="hero-stat"><strong>0</strong><span>installs</span></div>
+        </div>
       </section>
 
       <section class="py-care-section" id="py-care-section">
@@ -76,6 +84,7 @@
       </section>
 
       <section id="lessons-section">
+        <span class="section-kicker">Your path</span>
         <h2 class="section-title" id="up-next-title">Lessons</h2>
         <div class="tier-groups" id="lesson-grid"></div>
       </section>
@@ -97,6 +106,6 @@
     <script src="js/py-care.js?v=7"></script>
     <script src="js/ui.js?v=16"></script>
     <script src="js/theme.js"></script>
-    <script src="js/app.js?v=25"></script>
+    <script src="js/app.js?v=26"></script>
   </body>
 </html>
